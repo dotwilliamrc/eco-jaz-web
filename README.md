@@ -28,4 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Notas
 
--En la linea 34 del ./angular.json esta agregado el srcipt necesario para que funcionen las clases de bootstrap 5
+- En la linea 34 del _./angular.json_ esta agregado el script necesario para que funcionen las clases de [bootstrap 5](https://github.com/twbs/bootstrap)
