@@ -25,3 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Notas
+
+-En la linea 34 del ./angular.json esta agregado el srcipt necesario para que funcionen las clases de bootstrap 5
