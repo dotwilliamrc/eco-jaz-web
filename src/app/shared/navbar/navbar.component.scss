@@ -1,0 +1,21 @@
+//@import '~bootstrap/scss/functions';
+//@import '~bootstrap/scss/variables';
+//@import '~bootstrap/scss/mixins';
+
+.logo {
+  &__link {
+    height: 3rem;
+  }
+
+  &__imagen {
+    height: 100%;
+    width: auto;
+  }
+}
+
+//hr {
+//  @include media-breakpoint-up(sm) {
+//    visibility: hidden;
+//  }
+//}
+

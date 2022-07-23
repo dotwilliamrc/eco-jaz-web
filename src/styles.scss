@@ -1,2 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+//valiables
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap');
+
+$Roboto: 'Roboto', sans-serif;
+
+.font-roboto {
+  font-family: $Roboto;
+}
+
+.hover:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+//boostrap
+$font-family-sans-serif: 'Poppins', sans-serif;
+$font-family-monospace: 'Poppins', sans-serif;
+
+$white: #ffffff;
+
+$theme-colors: (
+    "light":      #c6dcc3,
+    "dark":       #1c1435,
+    "primary":    #28a325,
+    "secondary":  #326f23,
+    "info":       #3b974c,
+    "success":    #17ae1b,
+    "warning":    #f9c517,
+    "danger":     #f50a4c,
+);
+
 @import '../node_modules/bootstrap/scss/bootstrap.scss'

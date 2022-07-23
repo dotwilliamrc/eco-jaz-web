@@ -1,0 +1,23 @@
+<div class="col-12 col-lg-6 d-flex align-items-center">
+  <picture>
+    <source 
+     srcset="{{articulo.imagen}}.avif" 
+     type="image/avif" 
+     />
+    <source 
+      srcset="{{articulo.imagen}}.webp" 
+      type="image/webp" 
+     />
+    <img 
+      class="img-thumbnail"
+      src="{{articulo.imagen}}.jpg" 
+      alt="logo" 
+     />
+  </picture>
+</div>
+<div 
+  class="col-12 col-lg-6 mt-4 mt-lg-0 mb-0 {{articulo.clasesContenedorHijo}} d-flex justify-content-center flex-column"
+ >
+ <h1 class="h1 text-dark fs-2 text-center {{articulo.clasesHijo}}">{{articulo.titulo}}</h1>
+ <p class="text-secondary fs-3 text-center {{articulo.clasesHijo}}">{{articulo.descripcion}}</p>
+</div>
