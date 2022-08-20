@@ -1,0 +1,112 @@
+<div class="bg-light position-fixed top-0 end-0 bottom-0 start-0 d-flex justify-content-center align-items-center">
+<!--|---|---|---|---|## Inicio Formulario ##|---|---|---|---|--->
+  <form
+    (ngSubmit)="validate()"
+    class="card p-5 m-2"
+    autocomplete="off"
+    novalidate
+   >
+
+    <fieldset [disabled]="readon ? 'disabled' : null">
+   
+      <legend class="h2 text-dark">Ingres&aacute; tus datos</legend>
+   
+      <!--|---|---|---|---|## Barra de progeso ##|---|---|---|---|--->
+      <div class="progress mb-3">
+        <div 
+          class="progress-bar percent"
+          style="width:{{ barra }}%;"
+         >
+        </div>
+      </div>
+      <!--|---|---|---|-!!!-| Barra de progreso |-!!!-|---|---|---|--->
+   
+      <!--|---|---|---|---|## Nombres ##|---|---|---|---|--->
+      <div class="form-floating">
+        <input
+          type="text"
+          [ngClass]="{'is-valid': nombreValid && check, 'is-invalid': !nombreValid && check}"
+          class="form-control"
+          id="nombres"
+          placeholder="Nombre(s)"
+          name="nombres"
+          [(ngModel)]="nombre"
+         />
+        <label for="nombres">Nombre(s)</label>
+
+        <div class="valid-feedback">{{ nombreMensaje }}</div>
+        <div class="invalid-feedback">{{ nombreMensaje }}</div>
+      </div>
+      <!--|---|---|---|-!!!-| Nombres |-!!!-|---|---|---|--->
+   
+      <!--|---|---|---|---|## Apellidos ##|---|---|---|---|--->
+      <div class="form-floating">
+        <input
+          type="text"
+          [ngClass]="{'is-valid': apellidosValid && check, 'is-invalid': !apellidosValid && check}"
+          class="form-control mt-3"
+          id="apellidos"
+          placeholder="apellidos"
+          name="apellidos"
+          [(ngModel)]="apellidos"
+         />
+        <label for="apellidos">Apellidos</label>
+
+        <div class="valid-feedback">{{ apellidosMensaje }}</div>
+        <div class="invalid-feedback">{{ apellidosMensaje }}</div>
+      </div>
+      <!--|---|---|---|-!!!-| Apellidos |-!!!-|---|---|---|--->
+
+
+      <!--|---|---|---|---|## Fecha de nacimiento ##|---|---|---|---|--->
+      <div class="form-floating">
+        <input
+          type="date"
+          [ngClass]="{'is-valid': nacimientoValid && check, 'is-invalid': !nacimientoValid && check}"
+          class="form-control mt-3"
+          id="nacimiento"
+          placeholder="nacimiento"
+          name="nacimiento"
+          [(ngModel)]="nacimiento"
+         />
+        <label for="nacimiento">Nacimiento</label>
+
+        <div class="valid-feedback">{{ nacimientoMensaje }}</div>
+        <div class="invalid-feedback">{{ nacimientoMensaje }}</div>
+      </div>
+      <!--|---|---|---|-!!!-| Fecha de nacimiento |-!!!-|---|---|---|--->
+
+      <!--|---|---|---|---|## Bottones ##|---|---|---|---|--->
+      <div class="row d-flex justify-content-evenly">
+        <input 
+          class="col-12 col-md-5 btn btn-secondary mt-3"
+          type="submit" 
+          value="Registrarse"
+         />
+
+        <input 
+          (click)="this.signinSerivce.ToLanding()"
+          class="col-12 col-md-5 btn btn-danger mt-3 text-white"
+          type="button" 
+          value="Cancelar"
+        />
+      </div>
+      <!--|---|---|---|-!!!-| Bottones |-!!!-|---|---|---|--->
+
+    </fieldset>
+
+  </form>
+</div>
+<!--|---|---|---|-!!!-| Formulario |-!!!-|---|---|---|--->
+
+<!--|---|---|---|---|## Modal ##|---|---|---|---|--->
+<app-modal
+  [titulo]="titulo"
+  [mensaje]="mensaje"
+  [buttonTwo]="buttonTwo"
+  [buttonOne]="buttonOne"
+  [funcOne]="funcOne"
+  [funcTwo]="funcTwo"
+  #msg
+ ></app-modal>
+

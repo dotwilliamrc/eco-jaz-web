@@ -1,0 +1,27 @@
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header d-flex justify-content-center">
+        <h5 class="modal-title" id="staticBackdropLabel">{{ titulo }}</h5>
+      </div>
+      <div class="modal-body">
+        <p class="text-dark mb-0 text-center">{{ mensaje }}</p>
+      </div>
+      <div class="modal-footer">
+        <button 
+          (click)="funcOne()"
+          type="button"
+          class="btn btn-secondary" 
+          data-bs-dismiss="modal"
+         >{{ buttonOne }}</button>
+        <button 
+          (click)="funcTwo()"
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal">{{ buttonTwo }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+

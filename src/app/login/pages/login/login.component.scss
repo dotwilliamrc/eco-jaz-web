@@ -1,0 +1,10 @@
+.registrate {
+  cursor: pointer;
+  transition-property: opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

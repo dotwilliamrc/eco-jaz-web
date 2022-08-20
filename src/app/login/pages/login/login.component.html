@@ -1,1 +1,99 @@
-<p>login works!</p>
+<div class="bg-light position-fixed top-0 end-0 bottom-0 start-0 d-flex justify-content-center align-items-center">
+  <!--|---|---|---|---|## Inicio del formulario ##|---|---|---|---|--->
+  <form
+    (ngSubmit)="validate()"
+    class="card p-5 m-2"
+    autocomplete="off"
+    novalidate
+  >
+  <!--|---|---|---|---|## Inico del fieldset ##|---|---|---|---|--->
+  <fieldset [disabled]="readon ? 'disabled': null">
+
+    <legend class="h2 text-dark">Iniciar Sesi&oacute;n</legend>
+
+    <!--|---|---|---|---|## Email ##|---|---|---|---|--->
+    <div class="form-floating">
+      <input
+        type="email"
+        class="form-control"
+        [ngClass]="{ 'is-valid': validMail && validarMail, 'is-invalid': !validMail && validarMail }"
+        id="email"
+        placeholder="Tu correo elecr&oacute;nico"
+        name="email"
+        [(ngModel)]="email"
+       />
+      <label for="email">Tu correo elecr&oacute;nico</label>
+
+      <div class="valid-feedback">Todo bien</div>
+      <div class="invalid-feedback">{{ menEmail }}</div>
+    </div>
+    <!--|---|---|---|-!!!-| Email |-!!!-|---|---|---|--->
+
+    <!--|---|---|---|---|## Password ##|---|---|---|---|--->
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control mt-3"
+        [ngClass]="{ 'is-valid': validPass && validarPass, 'is-invalid': !validPass && validarPass }"
+        id="password"
+        placeholder="Contrase&ntilde;a"
+        name="password"
+        [(ngModel)]="password"
+       />
+      <label for="password">Contrase&ntilde;a</label>
+
+      <div class="valid-feedback">Todo bien</div>
+      <div class="invalid-feedback">{{ menPass }}</div>
+    </div>
+    <!--|---|---|---|-!!!-| Password |-!!!-|---|---|---|--->
+
+    <!--|---|---|---|---|## Registrarse ##|---|---|---|---|--->
+
+    <div class=" row mt-3">
+      <p>
+        &iquest;No tienes una cuenta&quest;
+        <a 
+          (click)="loginService.ToSignin()"
+          class="registrate text-primary"
+         >Registrate</a></p>
+    </div>
+
+    <!--|---|---|---|-!!!-| Registarse |-!!!-|---|---|---|--->
+
+    <!--|---|---|---|---|## Bottones ##|---|---|---|---|--->
+    <div class="row d-flex justify-content-evenly">
+      <input 
+        class="col-12 col-md-5 btn btn-secondary mt-3"
+        type="submit" 
+        value="Siguiente"
+       />
+
+      <input 
+        (click)="loginService.ToLanding()"
+        class="col-12 col-md-5 btn btn-danger mt-3 text-white"
+        type="button" 
+        value="Cancelar"
+      />
+    </div>
+    <!--|---|---|---|-!!!-| Bottones |-!!!-|---|---|---|--->
+
+
+  </fieldset>
+  <!--|---|---|---|-!!!-| Fin del fieldset |-!!!-|---|---|---|--->
+
+
+  </form>
+  <!--|---|---|---|-!!!-| Fin del formulario |-!!!-|---|---|---|--->
+
+</div>
+
+<!--|---|---|---|---|## Modal ##|---|---|---|---|--->
+<app-modal
+  [titulo]="titulo"
+  [mensaje]="mensaje"
+  [buttonOne]="buttonOne"
+  [buttonTwo]="buttonTwo"
+  [funcOne]="funcOne"
+  [funcTwo]="funcTwo"
+  #msg
+ ></app-modal>

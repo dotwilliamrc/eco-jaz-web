@@ -4,6 +4,10 @@ import { AppRoutingModule } from './app-routing.module'
 
 import { AppComponent } from './app.component'
 import { LandingModule } from './landing/landing.module'
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app'
+import { environment } from '../environments/environment'
+import { provideAuth, getAuth } from '@angular/fire/auth'
+import { LoginModule } from './login/login.module'
 
 @NgModule({
   declarations: [
@@ -12,7 +16,10 @@ import { LandingModule } from './landing/landing.module'
   imports: [
     BrowserModule,
     LandingModule,
-    AppRoutingModule
+    LoginModule,
+    AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth())
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 //valiables
+:root {
+--white: #ffffff;
+--light: #c6dcc3;
+--dark: #1c1435;
+--primary: #064033;
+--secondary: #066465;
+--info: #1c936f;
+--accent1: #096049;
+--accent2: #478672;
+--accent3: #a8b8bd;
+--success: #05a337;
+--warning: #f1c506;
+--danger: #f2023e;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap');
 
 $Roboto: 'Roboto', sans-serif;
@@ -17,16 +32,52 @@ $font-family-sans-serif: 'Poppins', sans-serif;
 $font-family-monospace: 'Poppins', sans-serif;
 
 $white: #ffffff;
+$light: #c6dcc3;
+$dark: #1c1435;
+$primary: #064033;
+$secondary: #066465;
+$info: #1c936f;
+$accent1: #096049;
+$accent2: #478672;
+$accent3: #a8b8bd;
+$success: #05a337;
+$warning: #f1c506;
+$danger: #f2023e;
 
 $theme-colors: (
     "light":      #c6dcc3,
     "dark":       #1c1435,
-    "primary":    #28a325,
-    "secondary":  #326f23,
-    "info":       #3b974c,
-    "success":    #17ae1b,
-    "warning":    #f9c517,
-    "danger":     #f50a4c,
+    "primary":    #064033,
+    "secondary":  #066465,
+    "info":       #1c936f,
+    "accent1":    #096049,
+    "accent2":    #478672,
+    "accent3":    #a8b8bd,
+    "success":    #05a337,
+    "warning":    #f1c506,
+    "danger":     #f2023e,
 );
 
-@import '../node_modules/bootstrap/scss/bootstrap.scss'
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+.form-control:focus {
+        border-color: $primary;
+        box-shadow: 0 0 0 0.2rem rgba($color: $primary, $alpha: 0.25);
+    } 
+.was-validated .form-control:valid, .form-control.is-valid {
+  border-color: $secondary;
+  background-image: none;
+  &:focus {
+        border-color: $primary;
+        box-shadow: 0 0 0 0.2rem rgba($color: $primary, $alpha: 0.25);
+  } 
+}
+
+.was-validated .form-control:invalid, .form-control.is-invalid {
+  border-color: $danger;
+  background-image: none;
+  &:focus {
+        border-color: $danger;
+        box-shadow: 0 0 0 0.2rem rgba($color: $danger, $alpha: 0.25);
+  } 
+}

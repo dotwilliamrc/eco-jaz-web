@@ -1,0 +1,96 @@
+<div class="d-flex 
+            bg-light" 
+            [ngClass]="{'toggled': toggled.state}"
+     id="wrapper">
+
+  <div class="bg-dark" id="sidebar-wrapper">
+    <div class="sidebar-heading text-center py-4 text-light fs-4 border-bottom">
+      <img src="../../../../assets/logos/logo.png" alt="logo" class="img-fluid">
+      ecojaz
+    </div>
+
+    <div class="list-group list-group-flush my-3">
+      <a 
+        *ngFor="let menu of men"
+        [routerLink]="menu.route"
+        routerLinkActive="active text-dark"
+        class="list-group-item 
+               list-group-item-action 
+               text-light 
+               fw-bold"
+       >
+       <i class="material-icons me-3 align-middle">{{menu.icono}}</i>
+       <span class="align-middle">{{menu.name}}</span>
+      </a>
+
+      <a 
+        (click)="logout()"
+        class="list-group-item list-group-item-action bg-transparent text-light fw-bold"
+       >
+       <i class="material-icons me-3 align-middle text-danger">logout</i>
+       <span class="align-middle text-danger">Cerrar sesi&oacute;n</span>
+      </a>
+
+    </div>
+  </div>
+
+  <div id="page-content-wrapper">
+      
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+      <div class="d-flex align-items-center">
+        <i class="material-icons 
+                  text-dark fs-4 
+                  d-md-none
+                  me-3" 
+           id="menu-toggle"
+           (click)="toggle()">
+          menu
+        </i>
+        <h2 class="fs-2 m-0 text-dark">Materiales</h2>
+      </div>
+
+      <button 
+        class="navbar-toggler" 
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+       >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a 
+              href="#" 
+              class="nav-link dropdown-toggle text-dark fw-bold align-middle" 
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >
+                <i class="material-icons me-2 align-middle">person</i>
+                <span class="align-middle">Jhon Doe</span>
+            </a>
+            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+              <li><a href="#" class="dropdown-item">Perfil</a></li>
+              <li><a href="#" class="dropdown-item">Ajustes</a></li>
+              <li>
+                <a (click)="logout()"
+                   class="logout dropdown-item">
+                  Cerrar Sesi&oacute;n
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

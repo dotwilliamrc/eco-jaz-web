@@ -16,12 +16,18 @@
   </ul>
   <div class="d-inline-flex flex-wrap">
     <button
+      (click)="goLogin()"
       class="btn btn-outline-light me-2"
       type="button"
-      routerLink="login"
      >
        Iniciar Sesion
     </button>
-    <button class="btn btn-light" type="button">registrarse</button>
+    <button 
+      (click)="goSignin()"
+      class="btn btn-light" 
+      type="button"
+     >
+       registrarse
+    </button>
   </div>
 </header>

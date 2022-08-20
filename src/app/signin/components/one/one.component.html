@@ -1,0 +1,115 @@
+<div class="bg-light position-fixed top-0 end-0 bottom-0 start-0 d-flex justify-content-center align-items-center">
+  <!--|---|---|---|---|## Inicio Formulario ##|---|---|---|---|--->
+  <form 
+    (ngSubmit)="validate()"
+    class="card p-5 m-2" 
+    autocomplete="off" 
+    novalidate
+   >
+
+    <!--|---|---|---|---|## Inicio del Fieldset ##|---|---|---|---|--->
+    <fieldset [disabled]="readon ? 'disabled' : null">
+
+      <legend class="h2 text-dark">Registrarse</legend>   <!--|##### Legend #####|--->
+
+      <!--|---|---|---|---|## Barra de Progreso ##|---|---|---|---|--->
+      <div class="progress mb-3">
+        <div 
+         class="progress-bar percent"
+         style="width:{{ barra }}%;"
+         >
+        </div>
+      </div>
+      <!--|---|---|---|-!!!-| Barra de Progreso |-!!!-|---|---|---|--->
+
+      <!--|---|---|---|---|## Email ##|---|---|---|---|--->
+      <div class="form-floating">
+        <input 
+          type="email" 
+          [ngClass]="{ 'is-valid': emailValid && check, 'is-invalid': !emailValid && check}"
+          class="form-control" 
+          id="email" 
+          placeholder="Tu correo electr&oacute;nico" 
+          name="email"
+          [(ngModel)]="email"
+         />
+        <label for="email">Tu correo electr&oacute;nico</label>
+
+        <div class="valid-feedback">{{ emailMessaje }}</div>
+        <div class="invalid-feedback">{{ emailMessaje }}</div>
+      </div>
+      <!--|---|---|---|-!!!-| Email |-!!!-|---|---|---|--->
+
+      <!--|---|---|---|---|## Password ##|---|---|---|---|--->
+      <div class="form-floating">
+        <input 
+          type="password" 
+          [ngClass]="{ 'is-valid': passValid && check, 'is-invalid': !passValid && check}"
+          class="form-control mt-3" 
+          id="password" 
+          placeholder="Contrase&ntilde;a" 
+          name="password"
+          [(ngModel)]="pass"
+         />
+        <label for="password">Contrase&ntilde;a</label>
+
+        <div class="valid-feedback">{{ passMessaje }}</div>
+        <div class="invalid-feedback">{{ passMessaje }}</div>
+      </div>
+      <!--|---|---|---|-!!!-| Password |-!!!-|---|---|---|--->
+
+      <!--|---|---|---|---|## Repetir Password ##|---|---|---|---|--->
+      <div class="form-floating">
+        <input 
+          type="password" 
+          [ngClass]="{ 'is-valid': passRepValid && check, 'is-invalid': !passRepValid && check}"
+          class="form-control mt-3" 
+          id="password-r" 
+          placeholder="Repite tu contrase&ntilde;a" 
+          name="password-r"
+          [(ngModel)]="passRep"
+          />
+        <label for="password-r">Repite tu contrase&ntilde;a</label>
+
+        <div class="valid-feedback">{{ passRepMessaje }}</div>
+        <div class="invalid-feedback">{{ passRepMessaje }}</div>
+      </div>
+      <!--|---|---|---|-!!!-| Repetir Password |-!!!-|---|---|---|--->
+
+      <!--|---|---|---|---|## Registrarse ##|---|---|---|---|--->
+
+      <div class=" row mt-3">
+        <p>
+          &iquest;Ya tienes una cuenta&quest;
+          <a 
+            (click)="signinService.ToLogin()"
+            class="registrate text-primary"
+           >Inicar sesi&oacute;n</a></p>
+      </div>
+
+      <!--|---|---|---|-!!!-| Registarse |-!!!-|---|---|---|--->
+
+
+      <!--|---|---|---|---|## Bottones ##|---|---|---|---|--->
+      <div class="row d-flex justify-content-evenly">
+        <input 
+          class="col-12 col-md-5 btn btn-secondary mt-3"
+          type="submit" 
+          value="Siguiente"
+         />
+
+        <input 
+          (click)="this.signinService.ToLanding()"
+          class="col-12 col-md-5 btn btn-danger mt-3 text-white"
+          type="button" 
+          value="Cancelar"
+        />
+      </div>
+      <!--|---|---|---|-!!!-| Bottones |-!!!-|---|---|---|--->
+
+    </fieldset> 
+    <!--|---|---|---|-!!!-| Fieldset |-!!!-|---|---|---|--->
+
+  </form>
+  <!--|---|---|---|-!!!-| Formulario |-!!!-|---|---|---|--->
+</div>
