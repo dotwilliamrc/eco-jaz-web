@@ -1,0 +1,65 @@
+<div class="bg-light w-100 d-flex justify-content-center align-items-center recicladora-container">
+  <!--|---|---|---|---|## Inicio Formulario ##|---|---|---|---|--->
+  <form (ngSubmit)="validate()"
+        class="card p-5 m-2"
+        autocomplete="off"
+        novalidate>
+
+    <!--|---|---|---|---|## Inicio Fieldset ##|---|---|---|---|--->
+    <fieldset>
+
+      <legend class="h2 text-dark mb-3">Ingres&aacute; los datos de tu tienda</legend>
+
+      <!--|---|---|---|---|## Nombre ##|---|---|---|---|--->
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="nombre"
+          placeholder="El nombre de tu recicladora"
+          name="nombre"
+          [(ngModel)]="recicladora.nombre"/>
+        <label for="nombre">Nombre de tu recicladora</label>
+      </div>
+      <!--|---|---|---|-!!!-| Nombre |-!!!-|---|---|---|--->
+
+      <!--|---|---|---|---|## Direccion ##|---|---|---|---|--->
+      <div class="form-floating mt-3">
+        <textarea
+          class="form-control"
+          id="direccion"
+          placeholder="La direcci&oacute;n de tu recicladora"
+          name="direccion"
+          [(ngModel)]="recicladora.direccon"></textarea>
+        <label for="direccion">Direcci&oacute;n de tu recicladora</label>
+      </div>
+      <!--|---|---|---|-!!!-| Direccion |-!!!-|---|---|---|--->
+
+
+    <h2 class="text-primary fs-4 mt-3">Selecciona los materiales que reciclas:</h2>
+    <!--|---|---|---|---|## Materiales ##|---|---|---|---|--->
+    <div class="d-flex flex-wrap justify-content-center bg-light materiales w-100">
+      <app-card-two *ngFor="let material of materiales"
+                    (click)="toggleSelect(material)"
+                    [material]="material"
+                    [ngClass]="{'select': material.selected}"
+                    class="col-12 p-3">
+      </app-card-two>
+
+    </div>
+    <!--|---|---|---|-!!!-| Materiales |-!!!-|---|---|---|--->
+
+      <!--|---|---|---|---|## Botones ##|---|---|---|---|--->
+      <input class="col-12  btn btn-secondary mt-3"
+             type="submit" 
+             value="Siguiente"/>
+
+      <!--|---|---|---|-!!!-| Botones |-!!!-|---|---|---|--->
+
+    </fieldset>
+    <!--|---|---|---|-!!!-| Fin Fieldset |-!!!-|---|---|---|--->
+
+  </form>
+
+  <!--|---|---|---|-!!!-| Fin Formulario |-!!!-|---|---|---|--->
+</div>

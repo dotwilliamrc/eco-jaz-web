@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { Router } from '@angular/router'
+import { User } from 'src/app/interfaces/user'
 import { AuthService } from 'src/app/services/auth.service'
+import { FirestoreService } from 'src/app/services/firestore.service'
 import { ngclass } from '../../interfaces/main'
 import { Menu } from '../../interfaces/menu'
 import { MainService } from '../../service/main.service'
@@ -10,14 +12,32 @@ import { MainService } from '../../service/main.service'
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
   constructor (
     private readonly auth: AuthService,
     public readonly router: Router,
-    private readonly mainSerivice: MainService
-  ) { }
+    public readonly mainSerivice: MainService,
+    private readonly firestoreService: FirestoreService
+  ) {
+    void mainSerivice.getCurrentUser()
+  }
 
-  ngOnInit (): void {
+  // ************-| CurrentUser |-************
+  public get CurrentUser (): User {
+    return this.mainSerivice.usuario
+  }
+
+  public set CurrentUser (value: User) {
+    this.mainSerivice.usuario = value
+  }
+
+  // ************-| Actual |-************
+  public get active (): string {
+    return this.mainSerivice.active
+  }
+
+  public set active (value: string) {
+    this.mainSerivice.active = value
   }
 
   // ************-| men |-************
@@ -29,24 +49,10 @@ export class MainComponent implements OnInit {
     this.mainSerivice.men = value
   }
 
-  // ************-| active |-************
-  public getActive (): string {
-    this.active = this.active === 'active tex-dark' ? 'bg-transparent' : 'active text-dark'
-    return this.active
-  }
-
-  public get active (): string {
-    return this.mainSerivice.active
-  }
-
-  public set active (value: string) {
-    this.mainSerivice.active = value
-  }
-
   // ************-| toggle |-************
   public toggled: ngclass = {
     class: 'toggled',
-    state: true
+    state: false
   }
 
   public toggle (): void {

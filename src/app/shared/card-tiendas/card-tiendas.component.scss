@@ -1,0 +1,25 @@
+.card {
+  cursor: pointer;
+  transition-property: opacity;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.img-container {
+  overflow: hidden;
+  max-height: 9rem;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  border-radius: calc(0.375rem - 1px) calc(0.375rem - 1px) 0rem 0rem;
+}
+
+.card-text {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+}

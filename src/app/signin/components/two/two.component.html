@@ -58,23 +58,25 @@
       <!--|---|---|---|-!!!-| Apellidos |-!!!-|---|---|---|--->
 
 
-      <!--|---|---|---|---|## Fecha de nacimiento ##|---|---|---|---|--->
+      <!--|---|---|---|---|## Fecha de nip ##|---|---|---|---|--->
       <div class="form-floating">
         <input
-          type="date"
-          [ngClass]="{'is-valid': nacimientoValid && check, 'is-invalid': !nacimientoValid && check}"
+          type="number"
+          minlength="4"
+          maxlength="4"
+          [ngClass]="{'is-valid': nipValid && check, 'is-invalid': !nipValid && check}"
           class="form-control mt-3"
-          id="nacimiento"
-          placeholder="nacimiento"
-          name="nacimiento"
-          [(ngModel)]="nacimiento"
+          id="nip"
+          placeholder="nip"
+          name="nip"
+          [(ngModel)]="nip"
          />
-        <label for="nacimiento">Nacimiento</label>
+        <label for="nip">NIP</label>
 
-        <div class="valid-feedback">{{ nacimientoMensaje }}</div>
-        <div class="invalid-feedback">{{ nacimientoMensaje }}</div>
+        <div class="valid-feedback">{{ nipMensaje }}</div>
+        <div class="invalid-feedback">{{ nipMensaje }}</div>
       </div>
-      <!--|---|---|---|-!!!-| Fecha de nacimiento |-!!!-|---|---|---|--->
+      <!--|---|---|---|-!!!-| Fecha de nip |-!!!-|---|---|---|--->
 
       <!--|---|---|---|---|## Bottones ##|---|---|---|---|--->
       <div class="row d-flex justify-content-evenly">

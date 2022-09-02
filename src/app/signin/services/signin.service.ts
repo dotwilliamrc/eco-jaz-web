@@ -15,7 +15,7 @@ export class SigninService {
   private _passRep: string = ''
   private _nombre: string = ''
   private _apellidos: string = ''
-  private _nacimiento: string = ''
+  private _nip: string = ''
 
   // ************-| barra |-************
   public get barra (): number {
@@ -71,13 +71,13 @@ export class SigninService {
     this._apellidos = value
   }
 
-  // ************-| nacimiento |-************
-  public get nacimiento (): string {
-    return this._nacimiento
+  // ************-| nip |-************
+  public get nip (): string {
+    return this._nip
   }
 
-  public set nacimiento (value: string) {
-    this._nacimiento = value
+  public set nip (value: string) {
+    this._nip = value
   }
 
   // ************-| Metodo loading |-************
@@ -127,6 +127,6 @@ export class SigninService {
   public clearData (): void {
     this.nombre = ''
     this.apellidos = ''
-    this.nacimiento = ''
+    this.nip = ''
   }
 }

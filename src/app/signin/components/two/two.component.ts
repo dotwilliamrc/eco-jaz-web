@@ -1,7 +1,10 @@
 import { Component, ViewChild } from '@angular/core'
 import { FirebaseError } from '@angular/fire/app'
+import { UserCredential } from '@angular/fire/auth'
 import { Router } from '@angular/router'
+import { User } from 'src/app/interfaces/user'
 import { AuthService } from 'src/app/services/auth.service'
+import { FirestoreService } from 'src/app/services/firestore.service'
 import { SigninService } from '../../services/signin.service'
 
 @Component({
@@ -14,7 +17,8 @@ export class TwoComponent {
   constructor (
     public readonly signinSerivce: SigninService,
     private readonly router: Router,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private readonly firestoreService: FirestoreService
   ) { this.signinSerivce.clearData() }
 
   public readon: boolean = false
@@ -23,10 +27,10 @@ export class TwoComponent {
 
   public nombreMensaje: string = ''
   public apellidosMensaje: string = ''
-  public nacimientoMensaje: string = ''
+  public nipMensaje: string = ''
   public nombreValid: boolean = true
   public apellidosValid: boolean = true
-  public nacimientoValid: boolean = true
+  public nipValid: boolean = true
 
   // ************-| Modal |-************
   public titulo: string = ''
@@ -74,13 +78,13 @@ export class TwoComponent {
     this.signinSerivce.apellidos = value
   }
 
-  // ************-| nacimiento |-************
-  public get nacimiento (): string {
-    return this.signinSerivce.nacimiento
+  // ************-| nip |-************
+  public get nip (): string {
+    return this.signinSerivce.nip
   }
 
-  public set nacimiento (value: string) {
-    this.signinSerivce.nacimiento = value
+  public set nip (value: string) {
+    this.signinSerivce.nip = value
   }
 
   public async validate (): Promise<void> {
@@ -103,21 +107,38 @@ export class TwoComponent {
       this.apellidosMensaje = 'Todo correcto'
     }
 
-    // nacimiento
-    if (Number(this.nacimiento.split('-')[0]) > 2022 || Number(this.nacimiento.split('-')[0]) < 1922) {
-      this.nacimientoValid = false
-      this.nacimientoMensaje = 'Rango invalido'
+    // nip
+    const nipTester = /^\d{4}$/g
+    if (!nipTester.test(this.nip)) {
+      this.nipValid = false
+      this.nipMensaje = 'El NIP debe tener 4 d\u00EDgitos num\u00E9ricos'
     } else {
-      this.nacimientoValid = true
-      this.nacimientoMensaje = 'Todo correcto'
+      this.nipValid = true
+      this.nipMensaje = 'Todo correcto'
     }
 
-    if (this.nombreValid && this.apellidosValid && this.nacimientoValid) {
+    if (this.nombreValid && this.apellidosValid && this.nipValid) {
       this.readon = true
       try {
         await this.signinSerivce.loading(100)
-        await this.authService.register(this.signinSerivce.email,
+        const usr: UserCredential = await this.authService.register(this.signinSerivce.email,
           this.signinSerivce.pass)
+
+        // ************-| setusr |-************
+
+        const usuario: User = {
+          id: usr.user.uid,
+          codigo: Date.now().toString(),
+          nombre: this.nombre,
+          apellidos: this.apellidos,
+          nip: this.nip,
+          puntos: 0,
+          tipo: 1
+        }
+
+        await this.firestoreService.register(usuario, 'usuario', usuario.id)
+
+        // ************-| end setusr |-************
         await this.router.navigate(['/login'])
         this.signinSerivce.clearAll()
       } catch (err) {
@@ -139,7 +160,6 @@ export class TwoComponent {
           this.buttonOne = 'Inicio'
           this.buttonTwo = 'Aceptar'
           this.toggle()
-
         }
       }
     }

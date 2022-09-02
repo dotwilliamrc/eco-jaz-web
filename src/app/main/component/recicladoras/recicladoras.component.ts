@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { FirestoreService } from 'src/app/services/firestore.service'
+import { Recicladora } from '../../interfaces/recicladora'
+import { MainService } from '../../service/main.service'
 
 @Component({
   selector: 'app-recicladoras',
@@ -6,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recicladoras.component.scss']
 })
 export class RecicladorasComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor (
+    private readonly mainSerivice: MainService,
+    private readonly firestoreService: FirestoreService
+  ) {
+    mainSerivice.active = 'Recicladoras'
   }
 
+  public recicladoras: Recicladora[] = []
+
+  ngOnInit (): void {
+    this.firestoreService.getObjectRealtime<Recicladora>('recicladora', 'id').subscribe(res => {
+      this.recicladoras = res
+      console.log(this.recicladoras)
+    })
+  }
 }

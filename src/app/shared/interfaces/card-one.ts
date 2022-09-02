@@ -1,6 +1,6 @@
+import { Material } from "./material"
+
 export interface CardOne {
-  imagen: string
-  titulo: string
-  cuerpo: string
-  costo: number
+  material: Material
+  selected?: boolean
 }

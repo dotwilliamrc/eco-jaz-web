@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
 import { CardOne } from 'src/app/shared/interfaces/card-one'
+import { MainService } from '../../service/main.service'
 
 @Component({
   selector: 'app-materiales',
@@ -7,36 +8,52 @@ import { CardOne } from 'src/app/shared/interfaces/card-one'
   styleUrls: ['./materiales.component.scss']
 })
 export class MaterialesComponent {
+  constructor (
+    private readonly mainSerivice: MainService
+  ) {
+    mainSerivice.active = 'Materiales'
+  }
+
   public materiales: CardOne[] = [
     {
-      imagen: '../../../assets/imagenes/materiales/no-pet.jpg',
-      titulo: 'Pl\u00E1stico: no PET',
-      cuerpo: '5.00 puntos por kg',
-      costo: 5
+      material: {
+        imagen: '../../../assets/imagenes/materiales/no-pet.jpg',
+        nombre: 'Pl\u00E1stico: no PET',
+        costoXunidad: '5.00 puntos por kg',
+        costo: 5
+      }
     },
     {
-      imagen: '../../../assets/imagenes/materiales/plastico.jpg',
-      titulo: 'Pl\u00E1stico: PET',
-      cuerpo: '4.50 puntos por kg',
-      costo: 4.5
+      material: {
+        imagen: '../../../assets/imagenes/materiales/plastico.jpg',
+        nombre: 'Pl\u00E1stico: PET',
+        costoXunidad: '4.50 puntos por kg',
+        costo: 4.5
+      }
     },
     {
-      imagen: '../../../assets/imagenes/materiales/carton.jpg',
-      titulo: 'Cart\u00F3n',
-      cuerpo: '1.40 puntos por kg',
-      costo: 1.4
+      material: {
+        imagen: '../../../assets/imagenes/materiales/carton.jpg',
+        nombre: 'Cart\u00F3n',
+        costoXunidad: '1.40 puntos por kg',
+        costo: 1.4
+      }
     },
     {
-      imagen: '../../../assets/imagenes/materiales/vidrio.jpg',
-      titulo: 'Vidrio',
-      cuerpo: '0.85 puntos por kg',
-      costo: 0.85
+      material: {
+        imagen: '../../../assets/imagenes/materiales/vidrio.jpg',
+        nombre: 'Vidrio',
+        costoXunidad: '0.85 puntos por kg',
+        costo: 0.85
+      }
     },
     {
-      imagen: '../../../assets/imagenes/materiales/metal.jpg',
-      titulo: 'Metal',
-      cuerpo: '0.85 puntos por kg',
-      costo: 0.85
+      material: {
+        imagen: '../../../assets/imagenes/materiales/metal.jpg',
+        nombre: 'Metal',
+        costoXunidad: '0.85 puntos por kg',
+        costo: 0.85
+      }
     }
   ]
 }

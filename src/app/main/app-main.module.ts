@@ -7,6 +7,8 @@ import { PromocionesComponent } from './component/promociones/promociones.compon
 import { QrcodeComponent } from './component/qrcode/qrcode.component'
 import { RecicladorasComponent } from './component/recicladoras/recicladoras.component'
 import { TiendasComponent } from './component/tiendas/tiendas.component'
+import { SigninRecicladoraComponent } from './component/signin-recicladora/signin-recicladora.component'
+import { SigninTiendaComponent } from './component/signin-tienda/signin-tienda.component'
 
 const routes: Routes = [
   {
@@ -37,6 +39,14 @@ const routes: Routes = [
       {
         path: 'materiales',
         component: MaterialesComponent
+      },
+      {
+        path: 'reciclaje-signin',
+        component: SigninRecicladoraComponent
+      },
+      {
+        path: 'tienda-signin',
+        component: SigninTiendaComponent
       }
     ]
   }

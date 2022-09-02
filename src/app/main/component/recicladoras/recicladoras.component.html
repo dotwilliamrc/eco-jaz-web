@@ -1,1 +1,10 @@
-<p>recicladoras works!</p>
+<div class="d-flex flex-wrap justify-content-center">
+  <app-card-recicladoras *ngFor="let recicladora of recicladoras"
+                [recicladora]="recicladora"
+                class="col-xl-3
+                       col-lg-4
+                       col-sm-6
+                       col-12
+                       p-3">
+  </app-card-recicladoras>
+</div>

@@ -110,8 +110,7 @@ export class LoginComponent {
   public async validate (): Promise<void> {
     this.readon = true
     try {
-      const user = await this.auth.login(this.email, this.password)
-      console.log(user)
+      await this.auth.login(this.email, this.password)
       await this.router.navigate(['/'])
     } catch (err) {
       if (!(err instanceof FirebaseError)) {

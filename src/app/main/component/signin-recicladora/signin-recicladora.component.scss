@@ -1,0 +1,19 @@
+textarea {
+  min-height: 6rem;
+}
+
+.materiales {
+  height: 12rem;
+  max-width: 30rem;
+  overflow: scroll;
+}
+
+app-card-two {
+  transition-property: opacity;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in;
+}
+
+.select {
+  opacity: 0.4;
+}

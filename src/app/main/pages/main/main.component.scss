@@ -7,7 +7,9 @@ img {
 }
 
 #wrapper {
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100vh;
 
   &.toggled {
     #sidebar-wrapper {
@@ -17,7 +19,11 @@ img {
 }
 
 #sidebar-wrapper {
-  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  min-width: 15rem;
+  overflow: scroll;
   margin-left: -15rem;
   transition-property: margin;
   transition-duration: 0.25s;
@@ -35,6 +41,14 @@ img {
 
 #page-content-wrapper {
   min-width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
 }
 
 #menu-toggle {
@@ -96,5 +110,44 @@ img {
 
   &.logout:hover {
     color: var(--danger);
+  }
+}
+
+.collapsed-menu {
+  cursor: default;
+
+  &.collapsed {
+    .arrow {
+      &:before {
+        transform: translate(5px, -5px) rotate(90deg);
+      }
+      &:after {
+        transform: translate(-5px, 5px);
+      }
+    }
+  }
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  display: inline-block;
+  transform-origin: 50% 50%;
+  transform: rotate(45deg);
+  &:before, &:after {
+    position: absolute;
+    content: '';
+    width: 13px;
+    height: 3px;
+    top: calc(40% - 1.5px);
+    left: calc(40% - 1.5px);
+    background-color: var(--light);
+    transition: 0.4s ease
+  }
+
+  &:before {
+    transform-origin: 1.5px 50%;
+    transform: rotate(90deg);
   }
 }

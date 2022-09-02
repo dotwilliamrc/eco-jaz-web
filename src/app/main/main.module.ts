@@ -8,7 +8,10 @@ import { PromocionesComponent } from './component/promociones/promociones.compon
 import { QrcodeComponent } from './component/qrcode/qrcode.component'
 import { RecicladorasComponent } from './component/recicladoras/recicladoras.component'
 import { TiendasComponent } from './component/tiendas/tiendas.component'
-import {SharedModule} from '../shared/shared.module'
+import { SharedModule } from '../shared/shared.module'
+import { SigninTiendaComponent } from './component/signin-tienda/signin-tienda.component'
+import { SigninRecicladoraComponent } from './component/signin-recicladora/signin-recicladora.component'
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -17,13 +20,16 @@ import {SharedModule} from '../shared/shared.module'
     PromocionesComponent,
     QrcodeComponent,
     RecicladorasComponent,
-    TiendasComponent
+    TiendasComponent,
+    SigninTiendaComponent,
+    SigninRecicladoraComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     AppMainModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   exports: [
     MainComponent

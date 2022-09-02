@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth'
+import { Auth, signInWithEmailAndPassword, getAuth, User } from '@angular/fire/auth'
 import { createUserWithEmailAndPassword, UserCredential, signOut } from '@firebase/auth'
 
 @Injectable({
@@ -16,6 +16,11 @@ export class AuthService {
 
   public async login (email: string, password: string): Promise<UserCredential> {
     return await signInWithEmailAndPassword(this.auth, email, password)
+  }
+
+  public async getCurrent (): Promise<string | undefined> {
+    const currentAuth = getAuth()
+    return currentAuth.currentUser?.uid
   }
 
   public async logout (): Promise<void> {

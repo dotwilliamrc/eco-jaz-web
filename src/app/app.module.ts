@@ -8,6 +8,8 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app'
 import { environment } from '../environments/environment'
 import { provideAuth, getAuth } from '@angular/fire/auth'
 import { LoginModule } from './login/login.module'
+import { provideFirestore } from '@angular/fire/firestore'
+import { getFirestore } from '@firebase/firestore'
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { LoginModule } from './login/login.module'
     LoginModule,
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]

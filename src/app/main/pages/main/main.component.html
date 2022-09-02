@@ -22,6 +22,39 @@
        <i class="material-icons me-3 align-middle">{{menu.icono}}</i>
        <span class="align-middle">{{menu.name}}</span>
       </a>
+      
+      <!--|---|---|---|---|## Extra ##|---|---|---|---|--->
+      <div *ngIf="mainSerivice.extra[0]!.visible || mainSerivice.extra![1].visible" >
+        <div class="border-top my-3"></div>
+
+          <p class="text-light text-center collapsed-menu fw-bold collapsed"
+             data-bs-toggle="collapse" 
+             data-bs-target="#extra-collapse" 
+             aria-expanded="false">
+            Convertirme en
+            <span class="m-3"></span>
+            <span class="arrow align-middle"></span>
+          </p>
+
+        <div class="collapse" id="extra-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li *ngFor="let ext of mainSerivice.extra">
+              <a 
+                *ngIf="ext.visible"
+                [routerLink]="ext.route"
+                routerLinkActive="active text-dark"
+                class="list-group-item 
+                       list-group-item-action 
+                       text-light 
+                       fw-bold"
+               >
+               <i class="material-icons me-3 align-middle">{{ext.icono}}</i>
+               <span class="align-middle">{{ext.name}}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
 
       <a 
         (click)="logout()"
@@ -36,7 +69,7 @@
 
   <div id="page-content-wrapper">
       
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-4 px-4">
       <div class="d-flex align-items-center">
         <i class="material-icons 
                   text-dark fs-4 
@@ -46,7 +79,7 @@
            (click)="toggle()">
           menu
         </i>
-        <h2 class="fs-2 m-0 text-dark">Materiales</h2>
+        <h2 class="fs-2 m-0 text-dark">{{ active }}</h2>
       </div>
 
       <button 
@@ -73,7 +106,7 @@
               aria-expanded="false"
               >
                 <i class="material-icons me-2 align-middle">person</i>
-                <span class="align-middle">Jhon Doe</span>
+                <span class="align-middle">{{ this.CurrentUser.nombre }}</span>
             </a>
             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
               <li><a href="#" class="dropdown-item">Perfil</a></li>
