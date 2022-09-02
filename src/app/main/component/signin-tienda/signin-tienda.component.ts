@@ -38,7 +38,7 @@ export class SigninTiendaComponent {
         tipo.tipo = 4
         await this.firestoreService.update(tipo, 'usuario', this.mainService.usuario.id)
       }
-      await this.mainService.getCurrentUser()
+      this.mainService.setExtra()
       await this.router.navigate(['/main'])
     } catch (err) {
       console.log(err)

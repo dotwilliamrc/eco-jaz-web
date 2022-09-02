@@ -1,3 +1,10 @@
+<div class="d-flex justify-content-center align-items-center w-100 h-75">
 <div class="card">
-
+  <qrcode class="d-sm-none" [qrdata]="mainSerivice.usuario.codigo" [width]="300" [elementType]="'img'" [errorCorrectionLevel]="'M'"></qrcode>
+  <qrcode class="d-none d-sm-block" [qrdata]="mainSerivice.usuario.codigo" [width]="400" [elementType]="'img'" [errorCorrectionLevel]="'M'"></qrcode>
+  <div class="card-body">
+    <h5 class="card-title text-primary fw-bold text-center h2">{{ mainSerivice.usuario.codigo }}</h5>
+    <p class="card-text text-center h3 pt-3"> {{ mainSerivice.usuario.puntos }} </p>
+  </div>
+</div>
 </div>

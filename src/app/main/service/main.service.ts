@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core'
-import { BehaviorSubject, Observable } from 'rxjs'
 import { User } from 'src/app/interfaces/user'
 import { AuthService } from 'src/app/services/auth.service'
 import { FirestoreService } from 'src/app/services/firestore.service'
@@ -47,16 +46,41 @@ export class MainService {
       name: 'recicladora',
       icono: 'compost',
       route: 'reciclaje-signin',
-      visible: true
+      visible: false
     },
     {
       name: 'tienda',
       icono: 'add_business',
       route: 'tienda-signin',
-      visible: true
+      visible: false
     }
   ]
 
+  private _recicladoraMenu: Menu[] = [
+    {
+      name: 'recicladora',
+      icono: 'compost',
+      route: 'reciclaje-signin',
+      visible: false
+    }
+  ]
+
+  private _tiendaMenu: Menu[] = [
+    {
+      name: 'recicladora',
+      icono: 'compost',
+      route: 'reciclaje-signin',
+      visible: false
+    },
+    {
+      name: 'tienda',
+      icono: 'add_business',
+      route: 'tienda-signin',
+      visible: false
+    }
+  ]
+
+  // ************-| extra |-************
   public get extra (): Menu[] {
     return this._extra
   }
@@ -65,22 +89,56 @@ export class MainService {
     this._extra = [...value]
   }
 
+  // ************-| recicladora |-************
+  public get recicladoraMenu (): Menu[] {
+    return this._recicladoraMenu
+  }
+
+  public set recicladoraMenu (value: Menu[]) {
+    this._recicladoraMenu = value
+  }
+
+  // ************-| Tienda |-************
+  public get tiendaMenu (): Menu[] {
+    return this._tiendaMenu
+  }
+
+  public set tiendaMenu (value: Menu[]) {
+    this._tiendaMenu = value
+  }
+
   public setExtra (): void {
     if (this.usuario.tipo === 1) {
       this._extra[0].visible = true
       this._extra[1].visible = true
+      this._recicladoraMenu[0].visible = false
+      this._recicladoraMenu[1].visible = false
+      this._tiendaMenu[0].visible = false
+      this._tiendaMenu[1].visible = false
     }
     if (this.usuario.tipo === 2) {
       this._extra[0].visible = true
       this._extra[1].visible = false
+      this._recicladoraMenu[0].visible = true
+      this._recicladoraMenu[1].visible = true
+      this._tiendaMenu[0].visible = false
+      this._tiendaMenu[1].visible = false
     }
     if (this.usuario.tipo === 3) {
       this._extra[0].visible = false
       this._extra[1].visible = true
+      this._recicladoraMenu[0].visible = false
+      this._recicladoraMenu[1].visible = false
+      this._tiendaMenu[0].visible = true
+      this._tiendaMenu[1].visible = true
     }
     if (this.usuario.tipo === 4) {
       this._extra[0].visible = false
       this._extra[1].visible = false
+      this._recicladoraMenu[0].visible = true
+      this._recicladoraMenu[1].visible = true
+      this._tiendaMenu[0].visible = true
+      this._tiendaMenu[1].visible = true
     }
   }
 
@@ -117,6 +175,10 @@ export class MainService {
   public async getCurrentUser (): Promise<void> {
     const user: string = await this.authService.getCurrent() ?? ''
     this.usuario = await this.firestoreService.getObject('usuario', user) as User
+    this.firestoreService.getDocRealtime<User>('usuario', this.usuario.id).subscribe(res => {
+      this.usuario = res
+      console.log(this.usuario)
+    })
     this.setExtra()
   }
 }

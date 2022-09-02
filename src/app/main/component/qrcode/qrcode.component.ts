@@ -8,7 +8,7 @@ import { MainService } from '../../service/main.service'
 })
 export class QrcodeComponent {
   constructor (
-    private readonly mainSerivice: MainService
+    public readonly mainSerivice: MainService
   ) {
     mainSerivice.active = 'C\u00F3digo QR'
   }

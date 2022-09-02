@@ -1,8 +1,7 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { User } from 'src/app/interfaces/user'
 import { AuthService } from 'src/app/services/auth.service'
-import { FirestoreService } from 'src/app/services/firestore.service'
 import { ngclass } from '../../interfaces/main'
 import { Menu } from '../../interfaces/menu'
 import { MainService } from '../../service/main.service'
@@ -12,14 +11,15 @@ import { MainService } from '../../service/main.service'
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   constructor (
     private readonly auth: AuthService,
     public readonly router: Router,
-    public readonly mainSerivice: MainService,
-    private readonly firestoreService: FirestoreService
-  ) {
-    void mainSerivice.getCurrentUser()
+    public readonly mainSerivice: MainService
+  ) { }
+
+  ngOnInit (): void {
+    void this.mainSerivice.getCurrentUser()
   }
 
   // ************-| CurrentUser |-************

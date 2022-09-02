@@ -12,6 +12,7 @@ import { SharedModule } from '../shared/shared.module'
 import { SigninTiendaComponent } from './component/signin-tienda/signin-tienda.component'
 import { SigninRecicladoraComponent } from './component/signin-recicladora/signin-recicladora.component'
 import { FormsModule } from '@angular/forms'
+import { QRCodeModule } from 'angularx-qrcode'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FormsModule } from '@angular/forms'
     RouterModule,
     AppMainModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    QRCodeModule
   ],
   exports: [
     MainComponent
