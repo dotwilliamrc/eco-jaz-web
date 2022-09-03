@@ -12,6 +12,8 @@ import { SigninTiendaComponent } from './component/signin-tienda/signin-tienda.c
 import { PostsComponent } from './component/posts/posts.component'
 import { ScanTinendaComponent } from './component/scan-tinenda/scan-tinenda.component'
 import { ScanRecicladoraComponent } from './component/scan-recicladora/scan-recicladora.component'
+import {TiendaComponent} from './component/tienda/tienda.component'
+import {ReciladoraComponent} from './component/reciladora/reciladora.component'
 
 const routes: Routes = [
   {
@@ -62,6 +64,14 @@ const routes: Routes = [
       {
         path: 'tienda-ofertas',
         component: PostsComponent
+      },
+      {
+        path: 'tienda',
+        component: TiendaComponent
+      },
+      {
+        path: 'recicladora',
+        component: ReciladoraComponent
       }
     ]
   }

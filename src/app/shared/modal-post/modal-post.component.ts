@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core'
-import {Promocion} from 'src/app/interfaces/promocion'
-import {MainService} from 'src/app/main/service/main.service'
+import { Component, Input, AfterViewInit } from '@angular/core'
+import { Promocion } from 'src/app/interfaces/promocion'
+import { MainService } from 'src/app/main/service/main.service'
 import { FirestoreService } from 'src/app/services/firestore.service'
 declare const window: any
 
@@ -9,7 +9,7 @@ declare const window: any
   templateUrl: './modal-post.component.html',
   styleUrls: ['./modal-post.component.scss']
 })
-export class ModalPostComponent implements OnInit {
+export class ModalPostComponent implements AfterViewInit {
   constructor (
     private readonly mainService: MainService,
     private readonly firestoreService: FirestoreService
@@ -17,6 +17,7 @@ export class ModalPostComponent implements OnInit {
 
   @Input() tituloVentana: string = 'Nuevo'
   @Input() nueva: boolean = true
+  @Input() idModal: string = 'staticBackdrop-modal-post'
   @Input() promocion: Promocion = {
     id: 'p' + Math.random().toString(16).slice(2),
     uid: this.mainService.usuario.id,
@@ -28,9 +29,9 @@ export class ModalPostComponent implements OnInit {
 
   private modal!: any
 
-  ngOnInit (): void {
+  ngAfterViewInit (): void {
     this.modal = new window.bootstrap.Modal(
-      document.getElementById('staticBackdrop')
+      document.getElementById(this.idModal)
     )
   }
 

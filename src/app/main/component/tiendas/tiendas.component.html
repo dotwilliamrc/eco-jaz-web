@@ -1,6 +1,7 @@
 <div class="d-flex flex-wrap justify-content-center">
   <app-card-tiendas *ngFor="let tienda of tiendas"
                 [tienda]="tienda"
+                (click)="goTienda(tienda)"
                 class="col-xl-3
                        col-lg-4
                        col-sm-6

@@ -17,7 +17,7 @@
           edit
         </i>
       </button>
-      <button type="button" class="btn btn-outline-danger">
+      <button (click)="delete()" type="button" class="btn btn-outline-danger">
         <i class="material-icons">
           delete
         </i>
@@ -26,4 +26,4 @@
   </div>
 </div>
 
-<app-modal-post [promocion]="promocion" [nueva]="false" #edit></app-modal-post>
+<app-modal-post [promocion]="promocion" [idModal]="promocion.id" [nueva]="false" #edit></app-modal-post>

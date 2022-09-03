@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="row g-0">
+    <div class="col-4">
+      <div class="img-container">
+        <img src="../../../assets/imagenes/materiales/carton.jpg" class="rounded-start" alt="Material" />
+      </div>
+    </div>
+    <div class="col-8 card-body d-flex flex-column justify-content-center">
+      <h5 class="card-title text-primary fw-bold">{{ promocion.titulo }}</h5>
+      <p class="card-text text-secondary">{{ promocion.tienda }}</p>
+      <p class="card-text promo-descripcion">{{ promocion.descripcion }}</p>
+      <p class="card-text text-secondary fw-bold">Costo: {{ promocion.precio | number:'1.0-2' }} puntos</p>
+    </div>
+  </div>
+</div>
+

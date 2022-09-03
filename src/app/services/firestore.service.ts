@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Firestore, doc, setDoc, getDoc, docData, DocumentData, updateDoc, collectionData, DocumentSnapshot, where, query } from '@angular/fire/firestore'
+import { Firestore, doc, setDoc, getDoc, docData, DocumentData, updateDoc, collectionData, DocumentSnapshot, where, query, deleteDoc } from '@angular/fire/firestore'
 import { collection } from '@firebase/firestore'
 import { Observable } from 'rxjs'
 
@@ -14,6 +14,16 @@ export class FirestoreService {
   public async register<T>(object: T, coll: string, id: string): Promise<void> {
     const objectRef = doc(this.firestore, coll, id)
     return await setDoc(objectRef, object)
+  }
+
+  public async update<T>(object: T, coll: string, id: string): Promise<void> {
+    const objectRef = doc(this.firestore, coll, id)
+    return await updateDoc(objectRef, object)
+  }
+
+  public async delete (coll: string, id: string): Promise<void> {
+    const docRef = doc(this.firestore, coll, id)
+    return await deleteDoc(docRef)
   }
 
   public async getObject (coll: string, id: string): Promise<DocumentData | undefined> {
@@ -37,10 +47,5 @@ export class FirestoreService {
   public getDocRealtime<T>(coll: string, id: string): Observable<T> {
     const objectRef = doc(this.firestore, coll, id)
     return docData(objectRef, { idField: 'id' }) as Observable<T>
-  }
-
-  public async update<T>(object: T, coll: string, id: string): Promise<void> {
-    const objectRef = doc(this.firestore, coll, id)
-    return await updateDoc(objectRef, object)
   }
 }

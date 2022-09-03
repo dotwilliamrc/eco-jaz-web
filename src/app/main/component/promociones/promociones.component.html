@@ -1,1 +1,8 @@
-<p>promociones works!</p>
+<div class="d-flex flex-wrap justify-content-center">
+  <app-card-promocion *ngFor="let promocion of promociones"
+                [promocion]="promocion"
+                class="col-xl-6
+                       col-12
+                       p-3">
+  </app-card-promocion>
+</div>

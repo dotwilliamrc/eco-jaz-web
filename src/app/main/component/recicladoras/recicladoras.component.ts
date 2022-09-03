@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
 import { FirestoreService } from 'src/app/services/firestore.service'
 import { Recicladora } from '../../interfaces/recicladora'
 import { MainService } from '../../service/main.service'
+import { RecicladoraService } from '../../service/recicladora.service'
 
 @Component({
   selector: 'app-recicladoras',
@@ -11,7 +13,9 @@ import { MainService } from '../../service/main.service'
 export class RecicladorasComponent implements OnInit {
   constructor (
     private readonly mainSerivice: MainService,
-    private readonly firestoreService: FirestoreService
+    private readonly firestoreService: FirestoreService,
+    private readonly recicladoraService: RecicladoraService,
+    private readonly router: Router
   ) {
     mainSerivice.active = 'Recicladoras'
   }
@@ -21,7 +25,11 @@ export class RecicladorasComponent implements OnInit {
   ngOnInit (): void {
     this.firestoreService.getObjectRealtime<Recicladora>('recicladora', 'id').subscribe(res => {
       this.recicladoras = res
-      console.log(this.recicladoras)
     })
+  }
+
+  public async goRecicladora (recicladora: Recicladora): Promise<void> {
+    this.recicladoraService.reciladora = recicladora
+    await this.router.navigate(['/main/recicladora'])
   }
 }
