@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
 import { MainService } from '../../service/main.service'
 
 @Component({
@@ -16,4 +16,9 @@ export class PostsComponent implements OnInit {
   ngOnInit (): void {
   }
 
+  @ViewChild('add') add!: any
+
+  public showAdd (): void {
+    this.add.toggle()
+  }
 }

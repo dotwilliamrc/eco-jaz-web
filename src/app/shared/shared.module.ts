@@ -9,6 +9,7 @@ import { CardOneComponent } from './card-one/card-one.component'
 import { CardTwoComponent } from './card-two/card-two.component'
 import { CardRecicladorasComponent } from './card-recicladoras/card-recicladoras.component'
 import { CardTiendasComponent } from './card-tiendas/card-tiendas.component'
+import { ModalPostComponent } from './modal-post/modal-post.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CardTiendasComponent } from './card-tiendas/card-tiendas.component'
     CardOneComponent,
     CardTwoComponent,
     CardRecicladorasComponent,
-    CardTiendasComponent
+    CardTiendasComponent,
+    ModalPostComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { CardTiendasComponent } from './card-tiendas/card-tiendas.component'
     CardOneComponent,
     CardTwoComponent,
     CardRecicladorasComponent,
-    CardTiendasComponent
+    CardTiendasComponent,
+    ModalPostComponent
   ]
 })
 export class SharedModule { }

@@ -1,3 +1,7 @@
-<button type="button" class="btn btn-primary btn-circle btn-xl btn-fixed">
+<button type="button" 
+        (click)="showAdd()"
+        class="btn btn-primary btn-circle btn-xl btn-fixed">
 <span class="h1">+</span>
 </button>
+
+<app-modal-post #add></app-modal-post>
