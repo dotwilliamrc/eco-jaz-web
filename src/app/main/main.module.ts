@@ -13,6 +13,9 @@ import { SigninTiendaComponent } from './component/signin-tienda/signin-tienda.c
 import { SigninRecicladoraComponent } from './component/signin-recicladora/signin-recicladora.component'
 import { FormsModule } from '@angular/forms'
 import { QRCodeModule } from 'angularx-qrcode'
+import { PostsComponent } from './component/posts/posts.component'
+import { ScanTinendaComponent } from './component/scan-tinenda/scan-tinenda.component'
+import { ScanRecicladoraComponent } from './component/scan-recicladora/scan-recicladora.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { QRCodeModule } from 'angularx-qrcode'
     RecicladorasComponent,
     TiendasComponent,
     SigninTiendaComponent,
-    SigninRecicladoraComponent
+    SigninRecicladoraComponent,
+    PostsComponent,
+    ScanTinendaComponent,
+    ScanRecicladoraComponent
   ],
   imports: [
     CommonModule,

@@ -9,6 +9,9 @@ import { RecicladorasComponent } from './component/recicladoras/recicladoras.com
 import { TiendasComponent } from './component/tiendas/tiendas.component'
 import { SigninRecicladoraComponent } from './component/signin-recicladora/signin-recicladora.component'
 import { SigninTiendaComponent } from './component/signin-tienda/signin-tienda.component'
+import { PostsComponent } from './component/posts/posts.component'
+import { ScanTinendaComponent } from './component/scan-tinenda/scan-tinenda.component'
+import { ScanRecicladoraComponent } from './component/scan-recicladora/scan-recicladora.component'
 
 const routes: Routes = [
   {
@@ -47,6 +50,18 @@ const routes: Routes = [
       {
         path: 'tienda-signin',
         component: SigninTiendaComponent
+      },
+      {
+        path: 'reciclaje-scanner',
+        component: ScanRecicladoraComponent
+      },
+      {
+        path: 'tienda-scanner',
+        component: ScanTinendaComponent
+      },
+      {
+        path: 'tienda-ofertas',
+        component: PostsComponent
       }
     ]
   }

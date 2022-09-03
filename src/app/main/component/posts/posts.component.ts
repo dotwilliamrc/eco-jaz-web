@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { MainService } from '../../service/main.service'
 
 @Component({
   selector: 'app-posts',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit {
+  constructor (
+    public readonly mainService: MainService
+  ) {
+    this.mainService.active = 'Ofertas'
+  }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit (): void {
   }
 
 }

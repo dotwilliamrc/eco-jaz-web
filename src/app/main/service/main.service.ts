@@ -3,6 +3,8 @@ import { User } from 'src/app/interfaces/user'
 import { AuthService } from 'src/app/services/auth.service'
 import { FirestoreService } from 'src/app/services/firestore.service'
 import { Menu } from '../interfaces/menu'
+import {Recicladora} from '../interfaces/recicladora'
+import {Tienda} from '../interfaces/tienda'
 
 @Injectable({
   providedIn: 'root'
@@ -58,24 +60,24 @@ export class MainService {
 
   private _recicladoraMenu: Menu[] = [
     {
-      name: 'recicladora',
-      icono: 'compost',
-      route: 'reciclaje-signin',
+      name: 'escanear',
+      icono: 'qr_code_scanner',
+      route: 'reciclaje-scanner',
       visible: false
     }
   ]
 
   private _tiendaMenu: Menu[] = [
     {
-      name: 'recicladora',
-      icono: 'compost',
-      route: 'reciclaje-signin',
+      name: 'escanear',
+      icono: 'qr_code_scanner',
+      route: 'tienda-scanner',
       visible: false
     },
     {
-      name: 'tienda',
-      icono: 'add_business',
-      route: 'tienda-signin',
+      name: 'ofertas',
+      icono: 'confirmation_number',
+      route: 'tienda-ofertas',
       visible: false
     }
   ]
@@ -112,31 +114,27 @@ export class MainService {
       this._extra[0].visible = true
       this._extra[1].visible = true
       this._recicladoraMenu[0].visible = false
-      this._recicladoraMenu[1].visible = false
       this._tiendaMenu[0].visible = false
       this._tiendaMenu[1].visible = false
     }
     if (this.usuario.tipo === 2) {
       this._extra[0].visible = true
       this._extra[1].visible = false
-      this._recicladoraMenu[0].visible = true
-      this._recicladoraMenu[1].visible = true
-      this._tiendaMenu[0].visible = false
-      this._tiendaMenu[1].visible = false
+      this._recicladoraMenu[0].visible = false
+      this._tiendaMenu[0].visible = true
+      this._tiendaMenu[1].visible = true
     }
     if (this.usuario.tipo === 3) {
       this._extra[0].visible = false
       this._extra[1].visible = true
-      this._recicladoraMenu[0].visible = false
-      this._recicladoraMenu[1].visible = false
-      this._tiendaMenu[0].visible = true
-      this._tiendaMenu[1].visible = true
+      this._recicladoraMenu[0].visible = true
+      this._tiendaMenu[0].visible = false
+      this._tiendaMenu[1].visible = false
     }
     if (this.usuario.tipo === 4) {
       this._extra[0].visible = false
       this._extra[1].visible = false
       this._recicladoraMenu[0].visible = true
-      this._recicladoraMenu[1].visible = true
       this._tiendaMenu[0].visible = true
       this._tiendaMenu[1].visible = true
     }
@@ -144,6 +142,8 @@ export class MainService {
 
   private _active: string = 'Materiales'
   private _usuario!: User
+  private _tienda!: Tienda
+  private _recicladora!: Recicladora
 
   // ************-| Menu Actual |-************
   public get men (): Menu[] {
@@ -172,13 +172,49 @@ export class MainService {
     this._usuario = value
   }
 
+  // ************-| Tienda |-************
+  public get tienda (): Tienda {
+    return this._tienda
+  }
+
+  public set tienda (value: Tienda) {
+    this._tienda = value
+  }
+
+  // ************-| Recicladora |-************
+  public get recicladora (): Recicladora {
+    return this._recicladora
+  }
+
+  public set recicladora (value: Recicladora) {
+    this._recicladora = value
+  }
+
   public async getCurrentUser (): Promise<void> {
     const user: string = await this.authService.getCurrent() ?? ''
     this.usuario = await this.firestoreService.getObject('usuario', user) as User
     this.firestoreService.getDocRealtime<User>('usuario', this.usuario.id).subscribe(res => {
       this.usuario = res
-      console.log(this.usuario)
     })
     this.setExtra()
+    if (this.usuario.tipo === 2 || this.usuario.tipo === 4) {
+      void this.getCurrentTienda()
+    }
+
+    if (this.usuario.tipo === 3 || this.usuario.tipo === 4) {
+      void this.getCurrentRecicladora()
+    }
+  }
+
+  public async getCurrentRecicladora (): Promise<void> {
+    this.firestoreService.getDocRealtime<Recicladora>('recicladora', this.usuario.id).subscribe(res => {
+      this.recicladora = res
+    })
+  }
+
+  public async getCurrentTienda (): Promise<void> {
+    this.firestoreService.getDocRealtime<Tienda>('tienda', this.usuario.id).subscribe(res => {
+      this.tienda = res
+    })
   }
 }

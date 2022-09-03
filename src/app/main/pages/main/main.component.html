@@ -37,7 +37,7 @@
           </p>
 
         <div class="collapse" id="extra-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small mb-0">
             <li *ngFor="let ext of mainSerivice.extra">
               <a 
                 *ngIf="ext.visible"
@@ -55,6 +55,71 @@
           </ul>
         </div>
       </div>
+
+      <!--|---|---|---|---|## Tienda ##|---|---|---|---|--->
+      <div *ngIf="mainSerivice.tiendaMenu![0].visible || mainSerivice.tiendaMenu![1].visible" >
+        <div class="border-top my-3"></div>
+
+          <p class="text-light text-center collapsed-menu fw-bold collapsed"
+             data-bs-toggle="collapse" 
+             data-bs-target="#tienda-collapse" 
+             aria-expanded="false">Tienda
+            <span class="m-3"></span>
+            <span class="arrow align-middle"></span>
+            </p>
+
+        <div class="collapse" id="tienda-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small mb-0">
+            <li *ngFor="let tn of mainSerivice.tiendaMenu">
+              <a 
+                *ngIf="tn.visible"
+                [routerLink]="tn.route"
+                routerLinkActive="active text-dark"
+                class="list-group-item 
+                       list-group-item-action 
+                       text-light 
+                       fw-bold"
+               >
+               <i class="material-icons me-3 align-middle">{{tn.icono}}</i>
+               <span class="align-middle">{{tn.name}}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!--|---|---|---|---|## Recicladora ##|---|---|---|---|--->
+      <div *ngIf="mainSerivice.recicladoraMenu[0]!.visible" >
+        <div class="border-top my-3"></div>
+
+          <p class="text-light text-center collapsed-menu fw-bold collapsed"
+             data-bs-toggle="collapse" 
+             data-bs-target="#recicladora-collapse" 
+             aria-expanded="false">Recicladora
+            <span class="m-3"></span>
+            <span class="arrow align-middle"></span>
+          </p>
+
+        <div class="collapse" id="recicladora-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small mb-0">
+            <li *ngFor="let res of mainSerivice.recicladoraMenu">
+              <a 
+                *ngIf="res.visible"
+                [routerLink]="res.route"
+                routerLinkActive="active text-dark"
+                class="list-group-item 
+                       list-group-item-action 
+                       text-light 
+                       fw-bold"
+               >
+               <i class="material-icons me-3 align-middle">{{res.icono}}</i>
+               <span class="align-middle">{{res.name}}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
 
       <a 
         (click)="logout()"

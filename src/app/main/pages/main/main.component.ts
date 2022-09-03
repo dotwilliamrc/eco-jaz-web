@@ -20,6 +20,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit (): void {
     void this.mainSerivice.getCurrentUser()
+
   }
 
   // ************-| CurrentUser |-************
