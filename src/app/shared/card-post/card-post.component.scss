@@ -1,0 +1,22 @@
+img {
+  max-height: 100%;
+  width: auto;
+}
+
+.img-container {
+  height: 10rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+
+.promo-descripcion {
+  height: 3rem;
+}
+
+p {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}

@@ -3,24 +3,82 @@
     <div class="modal-content">
 
       <div class="modal-header d-flex justify-content-center">
-        <h5 class="modal-title" id="staticBackdropLabel">{{ titulo }}</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">{{ tituloVentana }}</h5>
       </div>
 
       <div class="modal-body">
 
+        <!--|---|---|---|---|## Inicio Formulario ##|---|---|---|---|--->
+        <form (ngSubmit)="validate()"
+              class="card p-5 m-2"
+              autocomplete="off"
+              novalidate>
+
+          <!--|---|---|---|---|## Inicio Fieldset ##|---|---|---|---|--->
+          <fieldset>
+
+            <!--|---|---|---|---|## Titulo ##|---|---|---|---|--->
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="titulo"
+                placeholder="T&iacute;tulo de tu promoci&oacute;n"
+                name="titulo"
+                [(ngModel)]="promocion.titulo"/>
+              <label for="titulo">T&iacute;tulo de tu promoci&oacute;n</label>
+            </div>
+            <!--|---|---|---|-!!!-| Titulo |-!!!-|---|---|---|--->
+
+            <!--|---|---|---|---|## Descripcion ##|---|---|---|---|--->
+            <div class="form-floating mt-3">
+              <textarea
+                class="form-control"
+                id="descripcion"
+                placeholder="Descripci&oacute;n"
+                name="descripcion"
+                [(ngModel)]="promocion.descripcion"></textarea>
+              <label for="direccion">Descripci&oacute;n</label>
+            </div>
+            <!--|---|---|---|-!!!-| Descripcion |-!!!-|---|---|---|--->
+
+            <!--|---|---|---|---|## Precio ##|---|---|---|---|--->
+            <div class="form-floating mt-3">
+              <input
+                type="number"
+                class="form-control"
+                id="precio"
+                placeholder="Costo"
+                name="precio"
+                [ngModel]="promocion.precio | number: '1.0-2'"
+                (ngModelChange)="promocion.precio=$event"
+                >
+              <label for="precio">Costo</label>
+            </div>
+            <!--|---|---|---|-!!!-| Precio |-!!!-|---|---|---|--->
+
+            <!--|---|---|---|---|## Botones ##|---|---|---|---|--->
+            <button 
+              type="submit"
+              class="btn btn-primary col-12 mt-3"
+              data-bs-dismiss="modal">Guardar</button>
+
+            <button 
+              type="button"
+              class="btn btn-secondary col-12 mt-3" 
+              data-bs-dismiss="modal"
+             >Cancelar</button>
+            <!--|---|---|---|-!!!-| Botones |-!!!-|---|---|---|--->
+
+          </fieldset>
+          <!--|---|---|---|-!!!-| Fin Fieldset |-!!!-|---|---|---|--->
+
+        </form>
+        <!--|---|---|---|-!!!-| Fin Formulario |-!!!-|---|---|---|--->
+
+
       </div>
 
-      <div class="modal-footer">
-        <button 
-          type="button"
-          class="btn btn-secondary" 
-          data-bs-dismiss="modal"
-         >Cancelar</button>
-        <button 
-          type="button"
-          class="btn btn-primary"
-          data-bs-dismiss="modal">Guardar</button>
-      </div>
 
     </div>
   </div>

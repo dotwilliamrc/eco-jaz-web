@@ -3,8 +3,8 @@ import { User } from 'src/app/interfaces/user'
 import { AuthService } from 'src/app/services/auth.service'
 import { FirestoreService } from 'src/app/services/firestore.service'
 import { Menu } from '../interfaces/menu'
-import {Recicladora} from '../interfaces/recicladora'
-import {Tienda} from '../interfaces/tienda'
+import { Recicladora } from '../interfaces/recicladora'
+import { Tienda } from '../interfaces/tienda'
 
 @Injectable({
   providedIn: 'root'

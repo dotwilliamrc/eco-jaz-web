@@ -10,6 +10,8 @@ import { CardTwoComponent } from './card-two/card-two.component'
 import { CardRecicladorasComponent } from './card-recicladoras/card-recicladoras.component'
 import { CardTiendasComponent } from './card-tiendas/card-tiendas.component'
 import { ModalPostComponent } from './modal-post/modal-post.component'
+import {FormsModule} from '@angular/forms';
+import { CardPostComponent } from './card-post/card-post.component'
 
 @NgModule({
   declarations: [
@@ -20,11 +22,13 @@ import { ModalPostComponent } from './modal-post/modal-post.component'
     CardTwoComponent,
     CardRecicladorasComponent,
     CardTiendasComponent,
-    ModalPostComponent
+    ModalPostComponent,
+    CardPostComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     NavbarComponent,
@@ -34,7 +38,8 @@ import { ModalPostComponent } from './modal-post/modal-post.component'
     CardTwoComponent,
     CardRecicladorasComponent,
     CardTiendasComponent,
-    ModalPostComponent
+    ModalPostComponent,
+    CardPostComponent
   ]
 })
 export class SharedModule { }
