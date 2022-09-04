@@ -5,4 +5,5 @@ export interface Promocion {
   tienda: string
   descripcion: string
   precio: number
+  isSelect?: boolean
 }
