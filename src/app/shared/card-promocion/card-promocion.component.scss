@@ -1,14 +1,19 @@
 img {
   max-height: 100%;
   width: auto;
+  position: absolute;
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
 }
 
 .img-container {
+  position: relative;
+  overflow: hidden;
   height: 14rem;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-self: center;
 }
 
 .promo-descripcion {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 import { FirestoreService } from 'src/app/services/firestore.service'
+import { StorageService } from 'src/app/services/storage.service'
 import { CardOne } from 'src/app/shared/interfaces/card-one'
 import { Recicladora } from '../../interfaces/recicladora'
 import { MainService } from '../../service/main.service'
@@ -14,6 +15,7 @@ export class SigninRecicladoraComponent {
   constructor (
     private readonly mainService: MainService,
     private readonly firestoreService: FirestoreService,
+    private readonly starageService: StorageService,
     private readonly router: Router
   ) {
     mainService.active = 'Ser recicladora'
@@ -81,6 +83,10 @@ export class SigninRecicladoraComponent {
   // ************-| toggleSelect |-************
   public toggleSelect (c: CardOne): void {
     c.selected = !(c.selected ?? false)
+  }
+
+  public uploadRecicladora($event: any) {
+
   }
 
   // ************-| Validate |-************

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Input } from '@angular/core'
-import {Router} from '@angular/router'
+import { Router } from '@angular/router'
 import { User } from 'src/app/interfaces/user'
 import { FirestoreService } from 'src/app/services/firestore.service'
 declare const window: any
