@@ -17,11 +17,15 @@
         <input
           type="text"
           class="form-control"
+          [ngClass]="{'is-invalid': codigoInvalid}"
           id="codigo"
           placeholder="C&oacute;digo"
           name="codigo"
           [(ngModel)]="codigo"/>
         <label for="codigo">C&oacute;digo</label>
+        <div class="invalid-feedback">
+          Codigo invalido
+        </div>
       </div>
       <!--|---|---|---|-!!!-| Codigo |-!!!-|---|---|---|--->
 

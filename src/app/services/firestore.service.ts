@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Firestore, doc, setDoc, getDoc, docData, DocumentData, updateDoc, collectionData, DocumentSnapshot, where, query, deleteDoc } from '@angular/fire/firestore'
+import { Firestore, doc, setDoc, getDoc, docData, DocumentData, updateDoc, collectionData, DocumentSnapshot, where, query, deleteDoc, getDocs, QuerySnapshot } from '@angular/fire/firestore'
 import { collection } from '@firebase/firestore'
 import { Observable } from 'rxjs'
 
@@ -30,6 +30,18 @@ export class FirestoreService {
     const objectRef = doc(this.firestore, coll, id)
     const object: DocumentSnapshot<DocumentData> = await getDoc(objectRef)
     return object.data()
+  }
+
+  public async getObjectOfUser (coll: string, uid: string, camp: string): Promise<DocumentData | undefined> {
+    const objectRef = collection(this.firestore, coll)
+    const condition = where(camp, '==', uid)
+    const q = query(objectRef, condition)
+    let doc: DocumentData | undefined
+    const object: QuerySnapshot<DocumentData> = await getDocs(q)
+    object.forEach(docum => {
+      doc = docum.data()
+    })
+    return doc
   }
 
   public getObjectRealtime<T>(coll: string, id: string): Observable<T[]> {

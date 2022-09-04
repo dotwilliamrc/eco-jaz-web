@@ -15,7 +15,9 @@ export class ScanTinendaComponent implements OnInit {
 
   public onScan: boolean = true
   public codigo: string = ''
+  public codigoInvalid: boolean = false
   public total: number = 0
+
   public user!: User
 
   ngOnInit (): void {
@@ -34,7 +36,14 @@ export class ScanTinendaComponent implements OnInit {
   }
 
   public async buscar (): Promise<void> {
-    this.user = await this.firestoreService.getObject('usuario', this.codigo) as User
+    this.user = await this.firestoreService.getObjectOfUser('usuario', this.codigo, 'codigo') as User
+    if (this.user === undefined) {
+      this.codigoInvalid = true
+      this.onScan = true
+    } else {
+      this.codigoInvalid = false
+      this.onScan = false
+    }
     console.log(this.user)
   }
 }
