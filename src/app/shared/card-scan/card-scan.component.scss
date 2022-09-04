@@ -11,8 +11,13 @@ img {
   justify-self: center;
 }
 
-p {
-  margin-bottom: 0.5rem;
+.card {
+max-height: 9rem;
+}
+
+.form-control {
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center
 }

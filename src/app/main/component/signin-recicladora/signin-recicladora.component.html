@@ -1,7 +1,7 @@
 <div class="bg-light w-100 d-flex justify-content-center align-items-center recicladora-container">
   <!--|---|---|---|---|## Inicio Formulario ##|---|---|---|---|--->
   <form (ngSubmit)="validate()"
-        class="card p-5 m-2"
+        class="card p-3 m-2"
         autocomplete="off"
         novalidate>
 
@@ -22,6 +22,13 @@
         <label for="nombre">Nombre de tu recicladora</label>
       </div>
       <!--|---|---|---|-!!!-| Nombre |-!!!-|---|---|---|--->
+      
+      <!--|---|---|---|---|## Foto ##|---|---|---|---|--->
+      <div class="mt-3">
+        <label for="formFile">Ingresa la foto de tu local</label>
+        <input class="form-control" type="file" id="formFile">
+      </div>
+      <!--|---|---|---|-!!!-| Foto |-!!!-|---|---|---|--->
 
       <!--|---|---|---|---|## Direccion ##|---|---|---|---|--->
       <div class="form-floating mt-3">

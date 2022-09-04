@@ -1,1 +1,81 @@
-<p>scan-recicladora works!</p>
+<div *ngIf="onScan; else scanned"
+     class="h-75 d-flex justify-content-center align-items-center">
+
+  <!--|---|---|---|---|## Formulario ##|---|---|---|---|--->
+  <form class="card p-5 m-2"
+        (ngSubmit)="buscar()"
+        novalidate
+        autocomplete="off">
+
+    <!--|---|---|---|---|## Fieldset ##|---|---|---|---|--->
+    <fieldset>
+
+      <legend class="h2 text-dark mb-3">Ingres&aacute; el c&oacute;digo</legend>
+
+      <!--|---|---|---|---|## Codigo ##|---|---|---|---|--->
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          [ngClass]="{'is-invalid': codigoInvalid}"
+          id="codigo"
+          placeholder="C&oacute;digo"
+          name="codigo"
+          [(ngModel)]="codigo"/>
+        <label for="codigo">C&oacute;digo</label>
+        <div class="invalid-feedback">
+          Codigo invalido
+        </div>
+      </div>
+      <!--|---|---|---|-!!!-| Codigo |-!!!-|---|---|---|--->
+
+      <!--|---|---|---|---|## Botones ##|---|---|---|---|--->
+      <input class="col-12  btn btn-secondary mt-3"
+             type="submit" 
+             value="Siguiente"/>
+
+      <!--|---|---|---|-!!!-| Botones |-!!!-|---|---|---|--->
+
+
+    </fieldset>
+    <!--|---|---|---|-!!!-| Fieldset |-!!!-|---|---|---|--->
+
+  </form>
+  <!--|---|---|---|-!!!-| Formulario |-!!!-|---|---|---|--->
+  
+</div>
+
+<ng-template #scanned>
+<div class="d-flex flex-wrap justify-content-center">
+  <app-card-scan *ngFor="let material of mainService.recicladora.materiales"
+                [material]="material"
+                (sumar)="sumar()"
+                class="col-xl-6
+                       col-12
+                       p-3">
+  </app-card-scan>
+</div>
+
+<div class="card fijo bg-dark text-light p-3">
+<div class="row ">
+  <div class="col-8">
+    <h2 class="h3 card-title text-light">Costo Total: {{ total | number: '1.0-2'}}</h2>
+  </div>
+  <div class="col-4 btn-group-vertical">
+    <button type="button" (click)="showModal()" class="btn btn-outline-light">
+      <i class="material-icons">
+        done
+      </i>
+    </button>
+  </div>
+</div>
+</div>
+
+<app-modal-trasacion #transaction
+                     [nombre]="mainService.recicladora.nombre"
+                     [nip]="nip"
+                     [total]="total"
+                     [opreacion]="'suma'"
+                     [usuario]="user">
+</app-modal-trasacion>
+</ng-template>

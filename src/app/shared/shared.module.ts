@@ -14,7 +14,8 @@ import { FormsModule } from '@angular/forms'
 import { CardPostComponent } from './card-post/card-post.component'
 import { CardPromocionComponent } from './card-promocion/card-promocion.component'
 import { CardStoreComponent } from './card-store/card-store.component'
-import { ModalTrasacionComponent } from './modal-trasacion/modal-trasacion.component'
+import { ModalTrasacionComponent } from './modal-trasacion/modal-trasacion.component';
+import { CardScanComponent } from './card-scan/card-scan.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ModalTrasacionComponent } from './modal-trasacion/modal-trasacion.compo
     CardPostComponent,
     CardPromocionComponent,
     CardStoreComponent,
-    ModalTrasacionComponent
+    ModalTrasacionComponent,
+    CardScanComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import { ModalTrasacionComponent } from './modal-trasacion/modal-trasacion.compo
     CardPostComponent,
     CardPromocionComponent,
     CardStoreComponent,
-    ModalTrasacionComponent
+    ModalTrasacionComponent,
+    CardScanComponent
   ]
 })
 export class SharedModule { }

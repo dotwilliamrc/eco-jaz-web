@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core'
-import { User } from '@angular/fire/auth'
+import { Component, OnInit, ViewChild } from '@angular/core'
 import { Promocion } from 'src/app/interfaces/promocion'
+import { User } from 'src/app/interfaces/user'
 import { FirestoreService } from 'src/app/services/firestore.service'
 
 @Component({
@@ -17,6 +17,10 @@ export class ScanTinendaComponent implements OnInit {
   public codigo: string = ''
   public codigoInvalid: boolean = false
   public total: number = 0
+
+  public nombre: string = ''
+  public opreacion: string = 'resta'
+  public nip: number = 0
 
   public user!: User
 
@@ -43,7 +47,13 @@ export class ScanTinendaComponent implements OnInit {
     } else {
       this.codigoInvalid = false
       this.onScan = false
+      this.nip = Number(this.user.nip)
     }
-    console.log(this.user)
+  }
+
+  @ViewChild('transaction') transaction!: any
+
+  public showModal (): void {
+    this.transaction.toggle()
   }
 }

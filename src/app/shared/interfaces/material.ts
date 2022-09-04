@@ -3,4 +3,6 @@ export interface Material {
   nombre: string
   costoXunidad: string
   costo: number
+  kg?: number
+  total?: number
 }

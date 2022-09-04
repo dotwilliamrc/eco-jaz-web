@@ -3,19 +3,16 @@
     <div class="modal-content">
 
       <div class="modal-header d-flex justify-content-center">
-        <h5 class="modal-title" id="staticBackdropLabel">{{ titulo }}</h5>
+        <h5 class="modal-title fw-bold text-primary" id="staticBackdropLabel">Pagar {{ total | number: '1.0-2' }} Puntos</h5>
       </div>
 
       <div class="modal-body">
 
         <!--|---|---|---|---|## Inicio Formulario ##|---|---|---|---|--->
         <form (ngSubmit)="trasacion()"
-              class="card p-5 m-2"
+              class="border-0"
               autocomplete="off"
               novalidate>
-
-          <!--|---|---|---|---|## Inicio Fieldset ##|---|---|---|---|--->
-          <fieldset>
 
             <!--|---|---|---|---|## Precio ##|---|---|---|---|--->
             <div class="form-floating mt-3">
@@ -24,35 +21,29 @@
                 class="form-control"
                 [ngClass]="{'is-invalid': nipinvalid}"
                 id="nip"
-                [placeholder]="placeholder"
                 name="nip"
                 max="9999"
-                [ngModel]="nip | number: '4-0.0'"
-                (ngModelChange)="nip=$event"
+                placeholder="NIP de {{ nombre }}"
+                [ngModel]="nipWindow | number: '4-0.0'"
+                (ngModelChange)="nipWindow=$event"
                 >
-                <label for="nip">{{ placeholder }}</label>
+                <label for="nip">NIP de {{ nombre }}</label>
 
-                <div class="invalid-feedback">
-                 NIP inv&aacute;lido 
-                </div>
+                <div class="invalid-feedback">{{ mensaje }}</div>
             </div>
             <!--|---|---|---|-!!!-| Precio |-!!!-|---|---|---|--->
 
             <!--|---|---|---|---|## Botones ##|---|---|---|---|--->
             <button 
               type="submit"
-              class="btn btn-primary col-12 mt-3"
-              data-bs-dismiss="modal">Listo</button>
+              class="btn btn-primary col-12 mt-3">Listo</button>
 
             <button 
               type="button"
+              (click)="hide()"
               class="btn btn-secondary col-12 mt-3" 
-              data-bs-dismiss="modal"
              >Cancelar</button>
             <!--|---|---|---|-!!!-| Botones |-!!!-|---|---|---|--->
-
-          </fieldset>
-          <!--|---|---|---|-!!!-| Fin Fieldset |-!!!-|---|---|---|--->
 
         </form>
         <!--|---|---|---|-!!!-| Fin Formulario |-!!!-|---|---|---|--->
@@ -63,4 +54,3 @@
     </div>
   </div>
 </div>
-
