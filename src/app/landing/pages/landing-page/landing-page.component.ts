@@ -11,7 +11,7 @@ export class LandingPageComponent {
   public articulos: Info[] = [
     {
       titulo: 'Problemática',
-      descripcion: 'Actualmente las personas de Zacate-cas no tienen el hábito de reciclar, así como la administración pública no implementa estrategias con el fin de disminuir la contaminación en ríos, arroyos y almacenes de agua.',
+      descripcion: 'Actualmente las personas de Zacatecas no tienen el hábito de reciclar, así como la administración pública no implementa estrategias con el fin de disminuir la contaminación en ríos, arroyos y almacenes de agua.',
       imagen: '../../../../assets/imagenes/landing-image/landing-image-1',
       clasesHijo: 'text-lg-start',
       clasesContenedorHijo: 'pe-lg-5'
