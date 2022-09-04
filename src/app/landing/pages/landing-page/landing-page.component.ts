@@ -10,35 +10,27 @@ import { Info } from '../../interfaces/info'
 export class LandingPageComponent {
   public articulos: Info[] = [
     {
-      titulo: 'El titulo se incertara en esta parte',
-      descripcion: 'Lorem ipsum dolor sit amet, officia excepteur ex fugiat' +
-        'reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex' +
-        'esse exercitation amet. Nisi anim cupidatat excepteur officia.' +
-        'Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate.',
+      titulo: 'Problemática',
+      descripcion: 'Actualmente las personas de Zacatecas no tienen el hábito de reciclar, así como la administración pública no implementa estrategias con el fin de disminuir la contaminación en ríos, arroyos y almacenes de agua.',
       imagen: '../../../../assets/imagenes/landing-image/landing-image-1',
       clasesHijo: 'text-lg-start',
-      clasesContenedorHijo: 'ps-lg-5'
+      clasesContenedorHijo: 'pe-lg-5'
     },
     {
-      titulo: 'El titulo se incertara en esta parte',
-      descripcion: 'Lorem ipsum dolor sit amet, officia excepteur ex fugiat' +
-        'reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex' +
-        'esse exercitation amet. Nisi anim cupidatat excepteur officia.' +
-        'Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate.',
+      titulo: 'Objetivo',
+      descripcion: 'Fomentar el reciclaje para disminuir la contaminación del agua cielo y aire, impulsar la economía en los negocios locales y apoyar a las personas que reciclan, con beneficios en productos o servicios de uso cotidiano.',
       imagen: '../../../../assets/imagenes/landing-image/landing-image-2',
       clasesPadre: 'flex flex-row-reverse',
       clasesHijo: 'text-lg-end',
       clasesContenedorHijo: 'pe-lg-5'
     },
     {
-      titulo: 'El titulo se incertara en esta parte',
-      descripcion: 'Lorem ipsum dolor sit amet, officia excepteur ex fugiat' +
-        'reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex' +
-        'esse exercitation amet. Nisi anim cupidatat excepteur officia.' +
-        'Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate.',
+      titulo: 'Propuesta de valor',
+      descripcion: 'Disminución de micro plásticos en el medio ambiente, especialmente en ríos, arroyos y almacenes de agua.',
       imagen: '../../../../assets/imagenes/landing-image/landing-image-3',
       clasesHijo: 'text-lg-start',
-      clasesContenedorHijo: 'pe-lg-5'
+      clasesContenedorHijo: 'ps-lg-5'
+
     }
   ]
 }
