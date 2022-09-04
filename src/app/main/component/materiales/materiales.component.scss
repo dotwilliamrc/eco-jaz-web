@@ -1,0 +1,10 @@
+app-card-one {
+  cursor: pointer;
+  transition-property: opacity;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}

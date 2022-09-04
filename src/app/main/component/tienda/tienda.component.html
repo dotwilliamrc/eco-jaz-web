@@ -1,1 +1,18 @@
-<p>tienda works!</p>
+<div class="d-flex justify-content-center">
+  <app-card-store [titulo]="tiendaService.tienda.nombre"
+                  [direccion]="tiendaService.tienda.direccon"
+                  class="col-12
+                         p-3">
+  </app-card-store>
+</div>
+
+<div class="d-flex flex-wrap justify-content-center">
+  <app-card-promocion *ngFor="let promocion of promociones"
+                [promocion]="promocion"
+                class="col-xl-6
+                       col-12
+                       p-3">
+  </app-card-promocion>
+</div>
+
+
