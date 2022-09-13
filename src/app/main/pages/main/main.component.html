@@ -13,6 +13,7 @@
       <a 
         *ngFor="let menu of men"
         [routerLink]="menu.route"
+        (click)="toggle()"
         routerLinkActive="active text-dark"
         class="list-group-item 
                list-group-item-action 
@@ -42,6 +43,7 @@
               <a 
                 *ngIf="ext.visible"
                 [routerLink]="ext.route"
+                (click)="toggle()"
                 routerLinkActive="active text-dark"
                 class="list-group-item 
                        list-group-item-action 
@@ -74,6 +76,7 @@
               <a 
                 *ngIf="tn.visible"
                 [routerLink]="tn.route"
+                (click)="toggle()"
                 routerLinkActive="active text-dark"
                 class="list-group-item 
                        list-group-item-action 
@@ -106,6 +109,7 @@
               <a 
                 *ngIf="res.visible"
                 [routerLink]="res.route"
+                (click)="toggle()"
                 routerLinkActive="active text-dark"
                 class="list-group-item 
                        list-group-item-action 

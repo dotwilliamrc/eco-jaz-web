@@ -1,9 +1,9 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.ecojazitsznr.app',
+  appId: 'com.ecojazitszn.app',
   appName: 'EcoJaz',
-  webDir: 'dist/eco-jaz',
+  webDir: 'dist',
   bundledWebRuntime: false
 };
 

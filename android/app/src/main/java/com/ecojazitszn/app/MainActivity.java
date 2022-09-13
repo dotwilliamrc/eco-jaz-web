@@ -1,4 +1,4 @@
-package com.ecojazitsznr.app;
+package com.ecojazitszn.app;
 
 import com.getcapacitor.BridgeActivity;
 
